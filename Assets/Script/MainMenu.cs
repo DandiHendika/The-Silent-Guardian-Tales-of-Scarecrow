@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] GameObject menu1;
 
     public GameObject Menu;
+    public GameObject Setting;
     public bool isPaused = false;
     public void PlayGame(){
         SceneManager.LoadScene(1);
@@ -30,6 +31,13 @@ public class MainMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
+    }
+
+    public void SettingTab()
+    {
+        Menu.SetActive(true);
+        Time.timeScale = 0f;               
+        isPaused = true;
     }
 
     void Update()

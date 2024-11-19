@@ -8,11 +8,12 @@ TagManager:
   - Enemy
   - Checkpoint
   - PickUp
+  - TextReset
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Grabable

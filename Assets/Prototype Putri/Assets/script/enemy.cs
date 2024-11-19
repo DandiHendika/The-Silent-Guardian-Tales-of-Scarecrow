@@ -8,10 +8,12 @@ public class EnemyMovement : MonoBehaviour
     public float moveDistance; // Jarak gerakan musuh
     private Vector3 startPosition;   // Posisi awal musuh
     private bool movingRight = true; // Arah gerakan musuh
+    SpriteRenderer sprite;
 
     void Start()
     {
         startPosition = transform.position; // Menyimpan posisi awal musuh
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -24,6 +26,7 @@ public class EnemyMovement : MonoBehaviour
             if (transform.position.x >= startPosition.x + moveDistance)
             {
                 movingRight = false; // Ubah arah gerakan
+                sprite.flipX = false;
             }
         }
         else
@@ -33,6 +36,7 @@ public class EnemyMovement : MonoBehaviour
             if (transform.position.x <= startPosition.x - moveDistance)
             {
                 movingRight = true; // Ubah arah gerakan
+                sprite.flipX = true;
             }
         }
     }

@@ -13,44 +13,49 @@ public class karakter : MonoBehaviour
     private Vector3 checkpointPosition;
     private bool isGrounded;
     public Transform pickUpPoint;
+    public Transform BackTo;
     public float pickUpRange = 1.5f;
     private GameObject heldObject = null;
     public LayerMask playerLayer;
     public LayerMask pickedUpLayer; 
     public Vector2 pickUpOffset = new Vector2(0.5f, 0);
+    private Animator anim;
     #endregion
 
     private void Start()
     {
        body = GetComponent<Rigidbody2D>();
        sprite = GetComponent<SpriteRenderer>();
+       anim = GetComponent<Animator>();
        startPosition = transform.position;
        checkpointPosition = startPosition;
        UpdatePickUpPoint();
        isGrounded = true;
+       
     }
 
-    // Update is called once per frame
     private void Update()
     {
         #region Movement
-        if (Input.GetKey(KeyCode.RightArrow)){
+        float horizontalInput = Input.GetAxis("Horizontal");
+        if (horizontalInput > 0){
             body.velocity = new Vector2(speed,body.velocity.y);
             sprite.flipX = false;
             UpdatePickUpPoint();
-        }
-        if (Input.GetKey(KeyCode.LeftArrow)){
+        }else if(horizontalInput < 0){
             body.velocity = new Vector2(-speed, body.velocity.y);
             sprite.flipX = true;
             UpdatePickUpPoint();
+        } else {
+            body.velocity = new Vector2(0, body.velocity.y);
         }
         if (Input.GetKey(KeyCode.UpArrow) && isGrounded) {
             body.velocity = new Vector2(body.velocity.x, jumpForce);
             isGrounded = false;  
         }
-        if (transform.position.y < -20f) // Ubah -5f sesuai dengan posisi ground kamu
+        if (transform.position.y < -40f)
         {
-            ResetPosition(); // Mengatur ulang posisi karakter
+            ResetPosition();
             isGrounded = true;
         }
         #endregion
@@ -60,7 +65,7 @@ public class karakter : MonoBehaviour
         {
             if (heldObject == null)
             {
-                // Mencari objek di sekitar yang bisa diambil
+                anim.SetTrigger("PickUp");
                 Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, pickUpRange);
                 foreach (Collider2D collider in colliders)
                 {
@@ -86,7 +91,7 @@ public class karakter : MonoBehaviour
                 {
                     heldCollider.enabled = true;
                 }
-                heldObject.transform.SetParent(null);
+                heldObject.transform.SetParent(BackTo);
                 heldObject.GetComponent<Rigidbody2D>().isKinematic = false;
                 heldObject.layer = LayerMask.NameToLayer("Default");
                 heldObject = null;
