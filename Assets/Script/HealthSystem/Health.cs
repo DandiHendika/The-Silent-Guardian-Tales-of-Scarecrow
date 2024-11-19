@@ -18,7 +18,7 @@ public class Health : MonoBehaviour
     public void TakeDamage(float _damage){
         currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
         if(currentHealth > 0){
-            anim.SetTrigger("hurt");
+            anim.SetTrigger("Hurt");
         }else{
             SceneManager.LoadScene(0);
         }

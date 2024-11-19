@@ -30,7 +30,7 @@ public class karakter : MonoBehaviour
        startPosition = transform.position;
        checkpointPosition = startPosition;
        UpdatePickUpPoint();
-       isGrounded = true;
+       isGrounded = false;
        
     }
 
@@ -49,15 +49,18 @@ public class karakter : MonoBehaviour
         } else {
             body.velocity = new Vector2(0, body.velocity.y);
         }
-        if (Input.GetKey(KeyCode.UpArrow) && isGrounded) {
+        if (Input.GetKey(KeyCode.Space) && isGrounded) {
             body.velocity = new Vector2(body.velocity.x, jumpForce);
+            anim.SetTrigger("jump");
             isGrounded = false;  
         }
         if (transform.position.y < -40f)
         {
             ResetPosition();
-            isGrounded = true;
         }
+
+        anim.SetBool("run", horizontalInput != 0);
+        anim.SetBool("grounded", isGrounded);
         #endregion
 
         #region PickUp
@@ -104,6 +107,8 @@ public class karakter : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("PickUp"))
         {
             isGrounded = true;
+        }else{
+            isGrounded = false;
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
