@@ -5,8 +5,8 @@ Link Unity Hub : https://unity.com/download <br>
 Link Unity Version : https://unity.com/releases/editor/whats-new/2022.3.46#installs
 <h2>HOW TO CLONE REPOSITORY</h2>
 1. Pastikan akun github kalian sudah menjadi collaborator<br>
-2. Buka github desktop dan pilih opsi "clone repository" jika kalian tidak ada di menu utama maka pilih File > Clone repository<br>
-3. Pilih repository dengan nama "The-Silent-Guardian-Tales-of-Scarecrow"<br>
+2. Buka github desktop dan pilih opsi `clone repository` jika kalian tidak ada di menu utama maka pilih `File` > `Clone repository`<br>
+3. Pilih repository dengan nama `The-Silent-Guardian-Tales-of-Scarecrow`<br>
 4. Tunggu sampai proses selesai
 <h2>HOW TO CREATE UNITY PROJECT</h2>
 1. Install Unity Hub dan Unity Version LTS 2022.3.46f1<br>
