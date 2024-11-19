@@ -14,7 +14,7 @@ Link Unity Version : https://unity.com/releases/editor/whats-new/2022.3.46#insta
 3. Pada menu utama pilih <b>Add</b> > <b>Add Project From Disk</b><br>
 4. Cari folder tempat clone repository <b>The-Silent-Guardian-Tales-of-Scarecrow</b><br>
 5. Select folder dan tunggu installasi package<br>
-6. Jika sudah selesai kalian bisa pilih scene dan playe (recommend scene: Main Menu dan Level 1)
+6. Jika sudah selesai kalian bisa pilih scene dan play (recommend scene: Main Menu dan Level 1)
 <h2>HOW TO UPLOAD FILES</h2>
 <h4>PUSH</h4>
 1. Buka github desktop pilih menu <b>Fect Origin</b><br>
