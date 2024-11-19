@@ -16,6 +16,10 @@ Link Unity Version : https://unity.com/releases/editor/whats-new/2022.3.46#insta
 5. Select folder dan tunggu installasi package<br>
 6. Jika sudah selesai kalian bisa pilih scene dan play (recommend scene: Main Menu dan Level 1)
 <h2>HOW TO UPLOAD FILES</h2>
+<b>NOTE:</b><br>
+<b>-untuk setiap push pastikan summary nya jelas tentang apa yang dipush</b><br>
+<b>-Pastikan kalian push file ke folder yang benar atau kalian bisa buat folder baru terlebih dahulu</b><br>
+<b>-Jangan pindahkan file atau folder yang sudah ada karena dapat menyebabkan duplikasi</b><br>
 <h4>PUSH</h4>
 1. Buka github desktop pilih menu <b>Fect Origin</b><br>
 2. Isi <b>Summary</b> dibagian kiri bawah dan <b>Description</b> (<i>Opsional</i>)<br>
@@ -29,9 +33,3 @@ Link Unity Version : https://unity.com/releases/editor/whats-new/2022.3.46#insta
 <h2>LINK TO MANUAL</h2>
 Cara clone github : https://docs.github.com/en/desktop/adding-and-cloning-repositories/cloning-a-repository-from-github-to-github-desktop<br>
 Cara upload files ke github : https://marief-ismirianda.medium.com/tutorial-integrasi-unity-dengan-github-4e0c8f6827af
-<br>
-<br>
-<b>NOTE:</b><br>
-<b>-untuk setiap push pastikan summary nya jelas tentang apa yang dipush</b><br>
-<b>-Pastikan kalian push file ke folder yang benar atau kalian bisa buat folder baru terlebih dahulu</b><br>
-<b>-Jangan pindahkan file atau folder yang sudah ada karena dapat menyebabkan duplikasi</b><br>
