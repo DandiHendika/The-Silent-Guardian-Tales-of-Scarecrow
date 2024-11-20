@@ -7,10 +7,12 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] GameObject text;
     [SerializeField] GameObject menu1;
+    [SerializeField] GameObject SelectMenu;
 
     public GameObject Menu;
     public GameObject Setting;
     public bool isPaused = false;
+
     public void PlayGame(){
         SceneManager.LoadScene(1);
     }
@@ -40,6 +42,27 @@ public class MainMenu : MonoBehaviour
         isPaused = true;
     }
 
+    public void SelectLevel()
+    {
+        SelectMenu.SetActive(true);
+    }
+
+    public void SelecetTutorial(){
+        SceneManager.LoadScene(3);
+    }
+
+    public void SelecetLevelOne(){
+        SceneManager.LoadScene(1);
+    }
+
+    public void SelecetLevelTwo(){
+        SceneManager.LoadScene(2);
+    }
+
+    public void Restart(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f;
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

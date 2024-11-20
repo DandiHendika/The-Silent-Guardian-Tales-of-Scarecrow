@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class Health : MonoBehaviour
 {
     [SerializeField] private float startingHealth;
+    [SerializeField] GameObject Overmenu;
     public float currentHealth { get; private set; }
     private Animator anim; 
 
@@ -20,8 +21,13 @@ public class Health : MonoBehaviour
         if(currentHealth > 0){
             anim.SetTrigger("Hurt");
         }else{
-            SceneManager.LoadScene(0);
+            Gameover();
         }
+    }
+
+    private void Gameover(){
+        Overmenu.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     private void Update(){
