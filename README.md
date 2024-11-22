@@ -21,7 +21,7 @@ Link Unity Version : https://unity.com/releases/editor/whats-new/2022.3.46#insta
 <b>-Pastikan kalian push file ke folder yang benar atau kalian bisa buat folder baru terlebih dahulu</b><br>
 <b>-Jangan pindahkan file atau folder yang sudah ada karena dapat menyebabkan duplikasi</b><br>
 <h4>PUSH</h4>
-1. Pastikan file sudah berada pada folder yang benar
+1. Pastikan file sudah berada pada folder yang benar<br>
 2. Buka github desktop pilih menu <b>Fect Origin</b><br>
 3. Isi <b>Summary</b> dibagian kiri bawah dan <b>Description</b> (<i>Opsional</i>)<br>
 4. Lalu pilih menu <b>Commit</b><br>
