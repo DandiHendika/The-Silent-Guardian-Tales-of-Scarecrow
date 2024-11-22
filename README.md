@@ -20,15 +20,17 @@ Link Unity Version : https://unity.com/releases/editor/whats-new/2022.3.46#insta
 <b>-untuk setiap push pastikan summary nya jelas tentang apa yang dipush</b><br>
 <b>-Pastikan kalian push file ke folder yang benar atau kalian bisa buat folder baru terlebih dahulu</b><br>
 <b>-Jangan pindahkan file atau folder yang sudah ada karena dapat menyebabkan duplikasi</b><br>
+<b>-Pastikan kalian sudah clone repository ini</b>
 <h4>PUSH</h4>
-1. Buka github desktop pilih menu <b>Fect Origin</b><br>
-2. Isi <b>Summary</b> dibagian kiri bawah dan <b>Description</b> (<i>Opsional</i>)<br>
-3. Lalu pilih menu <b>Commit</b><br>
-4. Terakhir pilih menu <b>Push Origin</b> dibagian atas<br>
-5. Tunggu sampai proses selesai
+1. Pastikan file sudah berada pada folder yang benar<br>
+2. Buka github desktop pilih menu <b>Fect Origin</b><br>
+3. Isi <b>Summary</b> dibagian kiri bawah dan <b>Description</b> (<i>Opsional</i>)<br>
+4. Lalu pilih menu <b>Commit</b><br>
+5. Terakhir pilih menu <b>Push Origin</b> dibagian atas<br>
+6. Tunggu sampai proses selesai
 <h4>PULL</h4>
 1. Buka github desktop<br>
-2. Pilih menu <b>Fect Origin</b>
+2. Pilih menu <b>Fect Origin</b><br>
 3. Tunggu sampai proses selesai
 <h2>LINK TO MANUAL</h2>
 Cara clone github : https://docs.github.com/en/desktop/adding-and-cloning-repositories/cloning-a-repository-from-github-to-github-desktop<br>
