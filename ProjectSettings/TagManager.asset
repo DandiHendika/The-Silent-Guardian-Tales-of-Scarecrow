@@ -9,6 +9,7 @@ TagManager:
   - Checkpoint
   - PickUp
   - TextReset
+  - Bullet
   layers:
   - Default
   - TransparentFX

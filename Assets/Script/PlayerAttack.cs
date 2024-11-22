@@ -8,12 +8,12 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject[] fireballs;
     private Animator anim;
-    private PlayerMovement playerMovement;
+    private karakter karakter;
     private float cooldownTimer = Mathf.Infinity;
 
     private void Awake(){
         anim = GetComponent<Animator>();
-        playerMovement = GetComponent<PlayerMovement>();
+        karakter = GetComponent<karakter>();
     }
 
     private void Update(){
@@ -24,7 +24,7 @@ public class PlayerAttack : MonoBehaviour
     }
 
     private void Attack(){
-        anim.SetTrigger("Attack");
+        // anim.SetTrigger("Attack");
         cooldownTimer = 0;
 
         fireballs[0].transform.position = firePoint.position;

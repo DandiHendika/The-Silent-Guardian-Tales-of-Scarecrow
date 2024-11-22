@@ -13,6 +13,7 @@ public class karakter : MonoBehaviour
     private Vector3 checkpointPosition;
     private bool isGrounded;
     public Transform pickUpPoint;
+    public Transform firePoint;
     public Transform BackTo;
     public float pickUpRange = 1.5f;
     private GameObject heldObject = null;
@@ -110,10 +111,10 @@ public class karakter : MonoBehaviour
         }else{
             isGrounded = false;
         }
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            ResetPosition();
-        }
+        // if (collision.gameObject.CompareTag("Enemy"))
+        // {
+        //     TakeDamage();
+        // }
     }
 
     #region CheckPoint
@@ -137,5 +138,4 @@ public class karakter : MonoBehaviour
     {
         pickUpPoint.localPosition = sprite.flipX ? new Vector3(-pickUpOffset.x, pickUpOffset.y, 0) : new Vector3(pickUpOffset.x, pickUpOffset.y, 0);
     }
-    
 }
