@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,7 +9,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] GameObject text;
     [SerializeField] GameObject menu1;
     [SerializeField] GameObject SelectMenu;
-
+    private int point;
     public GameObject Menu;
     public GameObject Setting;
     public bool isPaused = false;
@@ -48,20 +49,24 @@ public class MainMenu : MonoBehaviour
     }
 
     public void SelecetTutorial(){
-        SceneManager.LoadScene(3);
-    }
-
-    public void SelecetLevelOne(){
         SceneManager.LoadScene(1);
     }
 
-    public void SelecetLevelTwo(){
+    public void SelecetLevelOne(){
         SceneManager.LoadScene(2);
+    }
+
+    public void SelecetLevelTwo(){
+        SceneManager.LoadScene(3);
     }
 
     public void Restart(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1f;
+    }
+
+    void Start(){
+        point = 0;
     }
     void Update()
     {

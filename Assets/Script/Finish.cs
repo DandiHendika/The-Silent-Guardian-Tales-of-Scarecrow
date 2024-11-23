@@ -10,6 +10,7 @@ public class FinishLine : MonoBehaviour
     public float loadDelay = 3f;         // Waktu sebelum pindah ke Scene 0
 
     private bool isFinished = false;     // Cegah trigger berulang
+    private int point;
 
     void Start()
     {
@@ -18,6 +19,8 @@ public class FinishLine : MonoBehaviour
         {
             winMessage.SetActive(false);
         }
+
+        point = 0;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -33,6 +36,8 @@ public class FinishLine : MonoBehaviour
                 winMessage.SetActive(true);
             }
 
+            point += 1;
+            Debug.Log(point);
             // Pause game
             Time.timeScale = 0f;
 

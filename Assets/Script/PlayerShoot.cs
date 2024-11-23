@@ -9,6 +9,8 @@ public class PlayerShooting : MonoBehaviour
     public float bulletSpeed = 10f; // Kecepatan peluru
     private SpriteRenderer sprite;  // Sprite player untuk menentukan arah
     private Animator anim;
+    [SerializeField] private float attackCooldown;
+    private float cooldownTimer = Mathf.Infinity;
 
     void Start()
     {
@@ -18,15 +20,17 @@ public class PlayerShooting : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B)) // Tombol untuk menembak
+        if (Input.GetKeyDown(KeyCode.B) && cooldownTimer > attackCooldown) // Tombol untuk menembak
         {
             anim.SetTrigger("Attack");
         }
+        cooldownTimer += Time.deltaTime;
     }
 
     void Shoot()
     {
         // Membuat peluru di posisi firePoint
+        cooldownTimer = 0;
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
         // Menentukan arah peluru
