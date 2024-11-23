@@ -21,7 +21,7 @@ public class Health : MonoBehaviour
         if(currentHealth > 0){
             anim.SetTrigger("Hurt");
         }else{
-            Gameover();
+            anim.SetTrigger("Die");
         }
     }
 
