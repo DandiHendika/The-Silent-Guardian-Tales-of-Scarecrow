@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShooting : MonoBehaviour
+public class BossShoot : MonoBehaviour
 {
     public GameObject bulletPrefab; // Prefab peluru
     public Transform firePoint;     // Titik tembak
@@ -11,7 +11,6 @@ public class PlayerShooting : MonoBehaviour
     private Animator anim;
     [SerializeField] private float attackCooldown;
     private float cooldownTimer = Mathf.Infinity;
-    private bool isattacking = false;
 
     void Start()
     {
@@ -21,10 +20,9 @@ public class PlayerShooting : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.B) && cooldownTimer > attackCooldown && !isattacking) // Tombol untuk menembak
+        if (Input.GetKeyDown(KeyCode.B) && cooldownTimer > attackCooldown) // Tombol untuk menembak
         {
             anim.SetTrigger("Attack");
-            isattacking = true;
         }
         cooldownTimer += Time.deltaTime;
     }
@@ -45,11 +43,6 @@ public class PlayerShooting : MonoBehaviour
 
         // Hancurkan peluru setelah beberapa detik
         Destroy(bullet, 2f);
-    }
-
-    public void EndAttack()
-    {
-        isattacking = false; // Mengizinkan input ulang setelah animasi selesai
     }
 }
 

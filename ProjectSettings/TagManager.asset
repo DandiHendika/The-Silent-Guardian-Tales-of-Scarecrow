@@ -10,6 +10,7 @@ TagManager:
   - PickUp
   - TextReset
   - Bullet
+  - Boss
   layers:
   - Default
   - TransparentFX

@@ -10,10 +10,11 @@ public class Health : MonoBehaviour
     [SerializeField] GameObject Overmenu;
     public float currentHealth { get; private set; }
     private Animator anim; 
-
+    Rigidbody2D rb;
     private void Awake(){
         currentHealth = startingHealth;
         anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     public void TakeDamage(float _damage){
@@ -21,6 +22,12 @@ public class Health : MonoBehaviour
         if(currentHealth > 0){
             anim.SetTrigger("Hurt");
         }else{
+            rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+            Collider2D collider = GetComponent<Collider2D>();
+            if (collider != null)
+            {
+                collider.enabled = false;
+            }
             anim.SetTrigger("Die");
         }
     }
@@ -39,6 +46,14 @@ public class Health : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
+        {
+            TakeDamage(1);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
         {
             TakeDamage(1);
         }

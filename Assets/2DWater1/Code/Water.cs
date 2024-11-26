@@ -222,17 +222,17 @@ namespace Bundos.WaterSystem
             }
         }
 
-        void OnTriggerExit2D(Collider2D other)
-        {
-            if (!interactive)
-                return;
+        // void OnTriggerExit2D(Collider2D other)
+        // {
+        //     if (!interactive)
+        //         return;
 
-            Rigidbody2D otherRigidbody = other.GetComponent<Rigidbody2D>();
-            if (otherRigidbody != null)
-            {
-                Vector2 contactPoint = other.ClosestPoint(transform.position);
-                Ripple(contactPoint, true);
-            }
-        }
+        //     Rigidbody2D otherRigidbody = other.GetComponent<Rigidbody2D>();
+        //     if (otherRigidbody != null)
+        //     {
+        //         Vector2 contactPoint = other.ClosestPoint(transform.position);
+        //         Ripple(contactPoint, true);
+        //     }
+        // }
     }
 }

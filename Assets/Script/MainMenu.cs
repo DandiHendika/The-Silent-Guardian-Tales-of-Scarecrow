@@ -9,7 +9,6 @@ public class MainMenu : MonoBehaviour
     [SerializeField] GameObject text;
     [SerializeField] GameObject menu1;
     [SerializeField] GameObject SelectMenu;
-    private int point;
     public GameObject Menu;
     public GameObject Setting;
     public bool isPaused = false;
@@ -66,7 +65,6 @@ public class MainMenu : MonoBehaviour
     }
 
     void Start(){
-        point = 0;
     }
     void Update()
     {

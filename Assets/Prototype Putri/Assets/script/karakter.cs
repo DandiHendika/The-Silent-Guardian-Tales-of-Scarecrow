@@ -105,18 +105,13 @@ public class karakter : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("PickUp"))
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("PickUp") || collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Boss"))
         {
             isGrounded = true;
         }else{
             isGrounded = false;
         }
-        // if (collision.gameObject.CompareTag("Enemy"))
-        // {
-        //     TakeDamage();
-        // }
     }
-
     #region CheckPoint
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -126,7 +121,7 @@ public class karakter : MonoBehaviour
             Debug.Log("Checkpoint reached!");
         }
     }
-        private void ResetPosition()
+    private void ResetPosition()
     {
         Debug.Log("Resetting position to checkpoint: " + checkpointPosition);
         transform.position = checkpointPosition;

@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
     {
         // Cek jika yang terkena peluru adalah musuh
         EnemyHealth enemy = collision.GetComponent<EnemyHealth>();
+        Bosscontrollers boss = collision.GetComponent<Bosscontrollers>();
         if (enemy != null)
         {
             // Berikan damage pada musuh
@@ -21,6 +22,14 @@ public class Bullet : MonoBehaviour
         if (collision.CompareTag("Ground"))
         {
             // Hancurkan peluru setelah mengenai ground
+            Destroy(gameObject);
+        }
+        if (boss != null)
+        {
+            // Berikan damage pada musuh
+            boss.TakeDamage(damage);
+
+            // Hancurkan peluru setelah tabrakan
             Destroy(gameObject);
         }
     }
