@@ -1,13 +1,12 @@
 using UnityEngine;
-using UnityEngine.UI; // Jika menggunakan UI.Text
-// using TMPro; // Uncomment jika menggunakan TextMeshPro
+using UnityEngine.UI; 
 using UnityEngine.SceneManagement;
 using TMPro;
 
 public class TutorialManager : MonoBehaviour
 {
-    public GameObject tutorialText; // Referensi ke GameObject teks tutorial
-    public float displayDuration ; // Durasi tampilan setiap pesan tutorial
+    public GameObject tutorialText;
+    public float displayDuration ;
     private string[] ShowMassage = {
         "Selamat datang di permainan! \nTekan panah kanan untuk bergerak.",
         "Tekan panah atas untuk lompat!",
@@ -18,34 +17,32 @@ public class TutorialManager : MonoBehaviour
 
     void Start()
     {
-        ShowMessage(); // Mulai menampilkan pesan tutorial
+        ShowMessage();
     }
 
     void ShowMessage()
     {
         if (currentMessageIndex < ShowMassage.Length)
         {
-            tutorialText.GetComponent<TextMeshProUGUI>().text = ShowMassage[currentMessageIndex]; // Mengatur teks menjadi pesan tutorial saat ini
-            tutorialText.SetActive(true); // Menampilkan teks
-            Invoke("NextMessage", displayDuration); // Panggil fungsi NextMessage setelah durasi tertentu
+            tutorialText.GetComponent<TextMeshProUGUI>().text = ShowMassage[currentMessageIndex];
+            tutorialText.SetActive(true);
+            Invoke("NextMessage", displayDuration); 
         }
         else
         {
-            // Jika semua pesan sudah ditampilkan, sembunyikan teks dan pindah ke scene game
             HideTutorial();
         }
     }
 
     void NextMessage()
     {
-        currentMessageIndex++; // Pindah ke pesan berikutnya
-        ShowMessage(); // Tampilkan pesan berikutnya
+        currentMessageIndex++;
+        ShowMessage();
     }
 
     void HideTutorial()
     {
-        tutorialText.SetActive(false); // Menghilangkan teks tutorial
-        // SceneManager.LoadScene("NamaSceneGame"); // Uncomment untuk pindah ke scene game
+        tutorialText.SetActive(false);
     }
 
 }

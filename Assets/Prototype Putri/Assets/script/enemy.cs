@@ -2,41 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
-    public float speed ;        // Kecepatan musuh
-    public float moveDistance; // Jarak gerakan musuh
-    private Vector3 startPosition;   // Posisi awal musuh
-    private bool movingRight = true; // Arah gerakan musuh
-    SpriteRenderer sprite;
+    public float speed ;       
+    public float moveDistance; 
+    private Vector3 startPosition;   
+    private bool movingRight = true;
 
     void Start()
     {
-        startPosition = transform.position; // Menyimpan posisi awal musuh
-        sprite = GetComponent<SpriteRenderer>();
+        startPosition = transform.position; 
     }
 
     void Update()
     {
-        // Menggerakkan musuh ke kanan atau kiri
         if (movingRight)
         {
             transform.position += Vector3.right * speed * Time.deltaTime;
-            // Cek apakah sudah mencapai batas gerakan
             if (transform.position.x >= startPosition.x + moveDistance)
             {
-                movingRight = false; // Ubah arah gerakan
-                sprite.flipX = false;
+                movingRight = false;
             }
         }
         else
         {
             transform.position += Vector3.left * speed * Time.deltaTime;
-            // Cek apakah sudah mencapai batas gerakan
             if (transform.position.x <= startPosition.x - moveDistance)
             {
-                movingRight = true; // Ubah arah gerakan
-                sprite.flipX = true;
+                movingRight = true;
             }
         }
     }
