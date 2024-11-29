@@ -17,15 +17,12 @@ public class karakter : MonoBehaviour
     private bool isHiding = false;
     private GameObject HideSpot;
     private Animator animator;
-    private AudioSource audioSource;
-    public AudioClip walkingSound;
 
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
         startPosition = transform.position;
         checkpointPosition = startPosition;
         if (finishText != null)
@@ -71,16 +68,6 @@ public class karakter : MonoBehaviour
         if (HideSpot != null && Input.GetKeyDown(KeyCode.E))
         {
             ToggleHide();
-        }
-
-        if (Walking && !audioSource.isPlaying)
-        {
-            audioSource.clip = walkingSound;
-            audioSource.Play();
-        }
-        else if (!Walking && audioSource.isPlaying)
-        {
-            audioSource.Stop();
         }
     }
 
