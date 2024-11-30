@@ -64,6 +64,13 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void ResetPrefs(){
+        PlayerPrefs.DeleteKey("levelAt");
+        // PlayerPrefs.Save();
+        Debug.Log("PlayerPrefs telah direset.");
+        SceneManager.LoadScene(0);
+    }
+
     void Start(){
     }
     void Update()
