@@ -11,6 +11,7 @@ public class Health : MonoBehaviour
     public float currentHealth { get; private set; }
     private Animator anim; 
     Rigidbody2D rb;
+    public GameObject mnObj;
     private void Awake(){
         currentHealth = startingHealth;
         anim = GetComponent<Animator>();
@@ -22,6 +23,8 @@ public class Health : MonoBehaviour
         if(currentHealth > 0){
             anim.SetTrigger("Hurt");
         }else{
+            MainMenu mn = mnObj.GetComponent<MainMenu>();
+            mn.isGameover = true; 
             rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
             Collider2D collider = GetComponent<Collider2D>();
             if (collider != null)

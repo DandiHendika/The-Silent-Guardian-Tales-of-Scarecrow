@@ -10,7 +10,6 @@ public class FinishLine : MonoBehaviour
     public float loadDelay = 3f;         // Waktu sebelum pindah ke Scene 0
 
     private bool isFinished = false;     // Cegah trigger berulang
-    private int point;
 
     void Start()
     {
@@ -19,8 +18,6 @@ public class FinishLine : MonoBehaviour
         {
             winMessage.SetActive(false);
         }
-
-        point = 0;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -35,27 +32,9 @@ public class FinishLine : MonoBehaviour
             {
                 winMessage.SetActive(true);
             }
-
-            point += 1;
-            Debug.Log(point);
             // Pause game
             Time.timeScale = 0f;
-
-            // Mulai proses load Scene 0 dengan delay
-            StartCoroutine(LoadSceneAfterDelay(loadDelay));
         }
-    }
-
-    private System.Collections.IEnumerator LoadSceneAfterDelay(float delay)
-    {
-        // Tunggu tanpa terpengaruh Time.timeScale (gunakan real-time wait)
-        yield return new WaitForSecondsRealtime(delay);
-
-        // Reset Time.timeScale sebelum berpindah scene
-        Time.timeScale = 1f;
-
-        // Pindah ke Scene 0
-        SceneManager.LoadScene(0);
     }
 }
 

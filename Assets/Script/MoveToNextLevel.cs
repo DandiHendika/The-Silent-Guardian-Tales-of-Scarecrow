@@ -39,4 +39,27 @@ public class MoveToNextLevel : MonoBehaviour
             }
         }
     }
+
+    public void NextLevel()
+    {
+        if(SceneManager.GetActiveScene().buildIndex == 3) /* < Change this int value to whatever your
+                                                                   last level build index is on your
+                                                                   build settings */
+        {
+            Debug.Log("You Completed ALL Levels");
+                
+            //Show Win Screen or Somethin.
+        }
+        else
+        {
+            //Move to next level
+            SceneManager.LoadScene(nextSceneLoad);
+
+                //Setting Int for Index
+            if (nextSceneLoad > PlayerPrefs.GetInt("levelAt"))
+            {
+                PlayerPrefs.SetInt("levelAt", nextSceneLoad);
+            }
+         }
+    }
 }

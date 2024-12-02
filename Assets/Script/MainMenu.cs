@@ -12,6 +12,7 @@ public class MainMenu : MonoBehaviour
     public GameObject Menu;
     public GameObject Setting;
     public bool isPaused = false;
+    public bool isGameover = false;
 
     public void PlayGame(){
         SceneManager.LoadScene(1);
@@ -37,9 +38,13 @@ public class MainMenu : MonoBehaviour
 
     public void SettingTab()
     {
+        if(isGameover){
         Menu.SetActive(true);
         Time.timeScale = 0f;               
         isPaused = true;
+        }else{
+            return;
+        }
     }
 
     public void SelectLevel()
@@ -60,6 +65,7 @@ public class MainMenu : MonoBehaviour
     }
 
     public void Restart(){
+        isGameover = false;
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -72,9 +78,14 @@ public class MainMenu : MonoBehaviour
     }
 
     void Start(){
+        Time.timeScale = 1f;
     }
     void Update()
     {
+        if(isGameover)
+        {
+            return;
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)

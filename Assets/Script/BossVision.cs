@@ -11,8 +11,8 @@ public class EnemyVision : MonoBehaviour
 
     public Vector2 offset = new Vector2(2f, 0f); // Offset untuk posisi depan musuh
     private SpriteRenderer spriteRenderer;      // Referensi ke SpriteRenderer
-    public GameObject karakterObj;
     public Rigidbody2D rb;
+    public GameObject mnObj;
 
     void Start()
     {
@@ -34,10 +34,8 @@ public class EnemyVision : MonoBehaviour
         Collider2D detectedPlayer = Physics2D.OverlapCircle(visionPosition, detectionRange, playerLayer);
 
         if (detectedPlayer != null)
-        {
+        { 
             GameOver();
-        }else{
-            Time.timeScale = 1f;
         }
     }
 
@@ -50,6 +48,8 @@ public class EnemyVision : MonoBehaviour
 
     private void GameOver()
     {
+        MainMenu mn = mnObj.GetComponent<MainMenu>();
+        mn.isGameover = true;
         rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
         // Opsional: Tunggu sebentar sebelum kalah
         // yield return new WaitForSeconds(1f);
