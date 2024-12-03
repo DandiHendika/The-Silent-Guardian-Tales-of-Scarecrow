@@ -16,6 +16,13 @@ public class QuizObject : MonoBehaviour
     private float interactionRange = 6f;
     [SerializeField] private GameObject teks;
     [SerializeField] private Transform player;
+    [SerializeField] private GameObject benar;
+    [SerializeField] private GameObject salah;
+    [SerializeField] private Animator anim;
+
+    private void Start(){
+        anim = GetComponent<Animator>();
+    }
 
     private void Update(){
         if (Vector3.Distance(player.position, transform.position) <= interactionRange)
@@ -25,6 +32,8 @@ public class QuizObject : MonoBehaviour
 
         if(playerInRange){
             teks.SetActive(true);
+        }else{
+            teks.SetActive(false);
         }
     }
     public void ShowQuiz()
@@ -39,13 +48,21 @@ public class QuizObject : MonoBehaviour
         {
             starCount++; // Tambah bintang jika jawaban benar
             Debug.Log("Jawaban benar! Bintang: " + starCount);
+            salah.gameObject.SetActive(false);
+            benar.gameObject.SetActive(true);
+            quizPanel.SetActive(false); // Sembunyikan panel kuiz
+            anim.SetTrigger("die");
+            // Hancurkan objek kuiz agar tidak bisa diinteraksi lagi
         }
         else
         {
             Debug.Log("Jawaban salah!");
+            benar.gameObject.SetActive(false);
+            salah.gameObject.SetActive(true);
         }
+    }
 
-        quizPanel.SetActive(false); // Sembunyikan panel kuiz
-        Destroy(gameObject); // Hancurkan objek kuiz agar tidak bisa diinteraksi lagi
+    public void DestroyObj(){
+        Destroy(gameObject);
     }
 }
