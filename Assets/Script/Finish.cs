@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,7 @@ public class FinishLine : MonoBehaviour
     public float loadDelay = 3f;         // Waktu sebelum pindah ke Scene 0
 
     private bool isFinished = false;     // Cegah trigger berulang
+    public TMP_Text starText;
 
     void Start()
     {
@@ -30,6 +32,7 @@ public class FinishLine : MonoBehaviour
             // Tampilkan pesan kemenangan
             if (winMessage != null)
             {
+                starText.text = "Bintang: " + QuizObject.starCount + "/3"; // Tampilkan jumlah bintang
                 winMessage.SetActive(true);
             }
             // Pause game

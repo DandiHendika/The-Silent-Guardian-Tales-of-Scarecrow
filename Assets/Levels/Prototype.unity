@@ -84530,7 +84530,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 0}
   menu1: {fileID: 0}
+  SelectMenu: {fileID: 0}
   Menu: {fileID: 1860803971}
+  Setting: {fileID: 0}
   isPaused: 0
 --- !u!114 &519420034
 MonoBehaviour:
@@ -86281,6 +86283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 3
+  Overmenu: {fileID: 0}
 --- !u!95 &1235801926
 Animator:
   serializedVersion: 5
@@ -87853,7 +87856,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 0}
   menu1: {fileID: 0}
+  SelectMenu: {fileID: 0}
   Menu: {fileID: 1860803971}
+  Setting: {fileID: 0}
   isPaused: 1
 --- !u!1 &1937978207
 GameObject:
