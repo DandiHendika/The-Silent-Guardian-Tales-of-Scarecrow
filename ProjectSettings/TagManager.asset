@@ -11,7 +11,8 @@ TagManager:
   - TextReset
   - Bullet
   - Boss
-  - Karakter
+  - karakter
+  - QuizObject
   layers:
   - Default
   - TransparentFX

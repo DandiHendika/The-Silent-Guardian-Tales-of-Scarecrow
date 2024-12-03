@@ -39,9 +39,9 @@ public class MainMenu : MonoBehaviour
     public void SettingTab()
     {
         if(isGameover){
-        Menu.SetActive(true);
-        Time.timeScale = 0f;               
-        isPaused = true;
+            Menu.SetActive(true);
+            Time.timeScale = 0f;               
+            isPaused = true;
         }else{
             return;
         }
