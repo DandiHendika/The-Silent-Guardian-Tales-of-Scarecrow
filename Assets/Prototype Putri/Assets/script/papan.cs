@@ -14,7 +14,7 @@ public class papan : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("karakter") && isActive || collision.gameObject.CompareTag("Player") && isActive)
+        if (collision.gameObject.CompareTag("Player") && isActive || collision.gameObject.CompareTag("Player") && isActive)
         {
             StartCoroutine(DisappearAfterDelay());
         }

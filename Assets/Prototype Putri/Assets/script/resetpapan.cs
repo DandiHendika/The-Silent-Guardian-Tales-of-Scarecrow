@@ -2,18 +2,18 @@ using UnityEngine;
 
 public class resetpapan : MonoBehaviour
 {
-    [SerializeField] private Transform karakter;
+    [SerializeField] private Transform Karakter;
     [SerializeField] private papan[] platforms;
     [SerializeField] private Vector3 startPosition;
 
     private void Start()
     {
-        startPosition = karakter.position;
+        startPosition = Karakter.position;
     }
 
     private void Update()
     {
-        if (karakter.position.y < -5)
+        if (Karakter.position.y < -5)
         {
             ResetPlayerAndPlatforms();
         }
@@ -21,7 +21,7 @@ public class resetpapan : MonoBehaviour
 
     private void ResetPlayerAndPlatforms()
     {
-        karakter.position = startPosition;
+        Karakter.position = startPosition;
         foreach (var platform in platforms)
         {
             platform.ResetPlatform();
