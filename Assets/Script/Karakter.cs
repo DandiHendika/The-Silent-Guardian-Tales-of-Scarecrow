@@ -120,7 +120,7 @@ public class Karakter : MonoBehaviour
         //     TakeDamage();
         // }
     }
-
+    
     #region CheckPoint
     private void OnTriggerEnter2D(Collider2D other)
     {
