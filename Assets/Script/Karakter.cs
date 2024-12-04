@@ -130,7 +130,7 @@ public class Karakter : MonoBehaviour
             Debug.Log("Checkpoint reached!");
         }
     }
-    private void ResetPosition()
+    public void ResetPosition()
     {
         Debug.Log("Resetting position to checkpoint: " + checkpointPosition);
         transform.position = checkpointPosition;

@@ -6,28 +6,23 @@ public class HidePlayer : MonoBehaviour
 {
     [SerializeField] private GameObject player;              // Referensi ke GameObject pemain
     [SerializeField] private Transform hidingSpot;           // Lokasi objek interaksi (tempat bersembunyi)
-    [SerializeField] private GameObject text;
-    public float interactionRange = 2f;    // Jarak interaksi maksimum
-    private bool isHidden = false;         // Status apakah player sedang tersembunyi
+    public float interactionRange = 2f;                     // Jarak interaksi maksimum
+    private bool isHidden = false;                          // Status apakah player sedang tersembunyi
+
+    // Variabel untuk pengaturan Gizmo
+    public Color gizmoColor = new Color(0, 1, 0, 0.5f);     // Warna Gizmo (default hijau transparan)
+    public bool drawSolidGizmo = false;                     // Apakah Gizmo digambar solid atau wireframe
 
     void Update()
     {
-        // Cek apakah pemain berada dalam jangkauan interaksi
         float distance = Vector3.Distance(player.transform.position, hidingSpot.position);
 
         if (distance <= interactionRange)
         {
-            text.SetActive(true);
-            // Tampilkan teks atau indikator interaksi (opsional)
-            Debug.Log("Press 'H' to hide/unhide");
-
-            // Deteksi tombol H untuk bersembunyi/keluar
             if (Input.GetKeyDown(KeyCode.H))
             {
                 ToggleHide();
             }
-        }else{
-            text.SetActive(false);
         }
     }
 
@@ -35,16 +30,31 @@ public class HidePlayer : MonoBehaviour
     {
         if (isHidden)
         {
-            // Keluarkan pemain dari persembunyian
             player.SetActive(true);
             isHidden = false;
         }
         else
         {
-            // Sembunyikan pemain
             player.SetActive(false);
             isHidden = true;
         }
     }
-}
 
+    private void OnDrawGizmos()
+    {
+        if (hidingSpot != null)
+        {
+            Gizmos.color = gizmoColor; // Set warna Gizmo
+            if (drawSolidGizmo)
+            {
+                // Gambar lingkaran solid
+                Gizmos.DrawSphere(hidingSpot.position, interactionRange);
+            }
+            else
+            {
+                // Gambar lingkaran wireframe
+                Gizmos.DrawWireSphere(hidingSpot.position, interactionRange);
+            }
+        }
+    }
+}

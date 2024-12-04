@@ -12,6 +12,7 @@ public class Bosscontrollers : MonoBehaviour
     private float lastProjectileTime;
     public Animator animator;
     public bool isPerformingUltimate = false;
+    public GameObject clear;
 
     void Update()
     {
@@ -79,6 +80,7 @@ public class Bosscontrollers : MonoBehaviour
     void Die()
     {
         animator.SetTrigger("die"); // Animasi kematian
+        clear.gameObject.SetActive(true);
         GetComponent<Collider2D>().enabled = false; // Matikan collider
         this.enabled = false; // Nonaktifkan script
         Destroy(gameObject, 1f); // Hapus boss setelah animasi
