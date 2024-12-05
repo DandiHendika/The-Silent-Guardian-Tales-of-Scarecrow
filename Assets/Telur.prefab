@@ -194,4 +194,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 2722182524483274098}
-  destroyDelay: 1
+  destroyDelay: 0

@@ -19,6 +19,11 @@ public class LoadingScene : MonoBehaviour
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
         operation.allowSceneActivation = false; // Jangan pindah ke scene sampai video selesai
 
+        videoPlayer.Prepare();
+        while (!videoPlayer.isPrepared)
+        {
+            yield return null;
+        }
         // Aktifkan loading screen dan mulai video
         loading.SetActive(true);
         videoPlayer.Play();
@@ -29,13 +34,6 @@ public class LoadingScene : MonoBehaviour
         else
         {
             Debug.LogError("Video tidak diputar");
-        }
-
-
-        // Tunggu hingga video selesai diputar
-        while (!videoPlayer.isPrepared)
-        {
-            yield return null; // Tunggu hingga video siap
         }
 
         while (videoPlayer.isPlaying)

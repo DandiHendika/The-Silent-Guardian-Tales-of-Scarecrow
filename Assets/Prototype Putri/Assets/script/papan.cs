@@ -17,6 +17,7 @@ public class papan : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && isActive || collision.gameObject.CompareTag("Player") && isActive)
         {
             StartCoroutine(DisappearAfterDelay());
+            ResetPlatform();
         }
     }
 

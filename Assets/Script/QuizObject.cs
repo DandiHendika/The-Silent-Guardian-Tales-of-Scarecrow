@@ -16,8 +16,8 @@ public class QuizObject : MonoBehaviour
     private Animator anim;
     private bool playerInRange = false;
     private float interactionRange = 7f;
-    [SerializeField] private GameObject teks;
-    [SerializeField] private GameObject teksDialog;
+    // [SerializeField] private GameObject teks;
+    // [SerializeField] private GameObject teksDialog;
     [SerializeField] private Transform player;
 
     void Start(){
@@ -32,13 +32,13 @@ public class QuizObject : MonoBehaviour
             playerInRange = false;
         }
 
-        if(playerInRange && quizPanel != null){
-            teksDialog.SetActive(true);
-            teks.SetActive(true);
-        }else{
-            teksDialog.SetActive(false);
-            teks.SetActive(false);
-        }
+        // if(playerInRange && quizPanel != null){
+        //     teksDialog.SetActive(true);
+        //     teks.SetActive(true);
+        // }else{
+        //     teksDialog.SetActive(false);
+        //     teks.SetActive(false);
+        // }
     }
 
     public void ShowQuiz()
