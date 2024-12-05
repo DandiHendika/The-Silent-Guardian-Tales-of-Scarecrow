@@ -8,6 +8,7 @@ using TMPro;
 public class Karakter : MonoBehaviour
 {
     #region Variable
+    [SerializeField] private AudioSource walkSound;
     public float speed;
     public float jumpForce;
     Rigidbody2D body;
@@ -24,6 +25,7 @@ public class Karakter : MonoBehaviour
     public LayerMask pickedUpLayer; 
     public Vector2 pickUpOffset = new Vector2(0.5f, 0);
     private Animator anim;
+    private bool isWalking = false;
     #endregion
 
     private void Start()
@@ -53,10 +55,21 @@ public class Karakter : MonoBehaviour
         } else {
             body.velocity = new Vector2(0, body.velocity.y);
         }
+        if (Input.GetAxis("Horizontal") != 0 && !isWalking )
+        {
+            walkSound.Play();
+            isWalking = true;
+        }
+        else if (Input.GetAxis("Horizontal") == 0 && isWalking)
+        {
+            walkSound.Stop();
+            isWalking = false;
+        }
         if (Input.GetKey(KeyCode.Space) && isGrounded) {
             body.velocity = new Vector2(body.velocity.x, jumpForce);
             anim.SetTrigger("jump");
             isGrounded = false;  
+            walkSound.Stop();
         }
         if (transform.position.y < -40f)
         {
@@ -115,11 +128,18 @@ public class Karakter : MonoBehaviour
         }else{
             isGrounded = false;
         }
-        // if (collision.gameObject.CompareTag("Enemy"))
-        // {
-        //     TakeDamage();
-        // }
+        if (collision.gameObject.CompareTag("PickUp"))
+        {
+            walkSound.Stop();
+            SoundManager.Instance.PlaySound2D("walkonwood");
+        }
     }
+
+    // private void OnCollisionExit2D(Collision2D collision){
+    //     if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("PickUp") || collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Boss")){
+    //         isGrounded = false;
+    //     }
+    // }
     
     #region CheckPoint
     private void OnTriggerEnter2D(Collider2D other)

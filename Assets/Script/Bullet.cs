@@ -13,6 +13,7 @@ public class Bullet : MonoBehaviour
         Bosscontrollers boss = collision.GetComponent<Bosscontrollers>();
         if (enemy != null)
         {
+            SoundManager.Instance.PlaySound2D("bullethit");
             // Berikan damage pada musuh
             enemy.TakeDamage(damage);
 
@@ -21,11 +22,13 @@ public class Bullet : MonoBehaviour
         }
         if (collision.CompareTag("Ground"))
         {
+            SoundManager.Instance.PlaySound2D("bullethit");
             // Hancurkan peluru setelah mengenai ground
             Destroy(gameObject);
         }
         if (boss != null)
         {
+            SoundManager.Instance.PlaySound2D("bullethit");
             // Berikan damage pada musuh
             boss.TakeDamage(damage);
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class QuizObject : MonoBehaviour
@@ -16,8 +17,8 @@ public class QuizObject : MonoBehaviour
     private Animator anim;
     private bool playerInRange = false;
     private float interactionRange = 7f;
-    // [SerializeField] private GameObject teks;
-    // [SerializeField] private GameObject teksDialog;
+    [SerializeField] private GameObject teks;
+    [SerializeField] private GameObject teksDialog;
     [SerializeField] private Transform player;
 
     void Start(){
@@ -32,13 +33,13 @@ public class QuizObject : MonoBehaviour
             playerInRange = false;
         }
 
-        // if(playerInRange && quizPanel != null){
-        //     teksDialog.SetActive(true);
-        //     teks.SetActive(true);
-        // }else{
-        //     teksDialog.SetActive(false);
-        //     teks.SetActive(false);
-        // }
+        if(playerInRange && quizPanel != null){
+            teksDialog.SetActive(true);
+            teks.SetActive(true);
+        }else{
+            teksDialog.SetActive(false);
+            teks.SetActive(false);
+        }
     }
 
     public void ShowQuiz()
@@ -65,6 +66,9 @@ public class QuizObject : MonoBehaviour
             teksbenar.SetActive(true); // Tampilkan teks jawaban benar
             Debug.Log("Jawaban benar! Bintang: " + starCount); // Sembunyikan panel kuis
             anim.SetTrigger("die"); // Aktifkan animasi koreksi
+            teks.SetActive(false);
+            teksDialog.SetActive(false);
+            this.enabled = false;
         }
         else
         {
