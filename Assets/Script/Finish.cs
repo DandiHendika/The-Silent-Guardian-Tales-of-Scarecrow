@@ -36,7 +36,7 @@ public class FinishLine : MonoBehaviour
                 winMessage.SetActive(true);
             }
             // Pause game
-            Time.timeScale = 0f;
+            // Time.timeScale = 0f;
         }
     }
 }
