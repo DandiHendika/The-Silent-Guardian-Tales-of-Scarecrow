@@ -41,6 +41,12 @@ public class LoadingScene : MonoBehaviour
             yield return null; // Tunggu hingga video selesai
         }
 
+        if (sceneId > PlayerPrefs.GetInt("levelAt", 1))
+        {
+            PlayerPrefs.SetInt("levelAt", sceneId);
+            PlayerPrefs.Save();
+        }
+
         // Aktifkan scene berikutnya setelah video selesai
         operation.allowSceneActivation = true;
     }

@@ -1,67 +1,78 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bosscontrollers : MonoBehaviour
 {
-    public int maxHealth = 3; // Nyawa boss
+    public int maxHealth = 3; 
     public int currentHealth;
-    public GameObject projectilePrefab; // Prefab proyektil
-    public Transform firePoint;         // Titik keluarnya proyektil
-    public float projectileCooldown = 200f; // Waktu jeda antar tembakan
+    public GameObject projectilePrefab; 
+    public Transform firePoint;         
+    public float projectileCooldown = 200f; 
     private float lastProjectileTime;
     public Animator animator;
     public bool isPerformingUltimate = false;
     public GameObject clear;
+    public GameObject dialog1;
+    public GameObject dialog2;
+    public GameObject dialog3;
+    public float dialoguesDuration = 2f;
+    private Rigidbody2D rb;
+
+    void Start(){
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     void Update()
     {
-        // Jika bos siap menembak, lakukan serangan proyektil
+        
         if (Time.time >= lastProjectileTime + projectileCooldown && !isPerformingUltimate)
         {
+            SoundManager.Instance.PlaySound2D("BossAttack");
             animator.SetTrigger("attack_fireball");
-            // FireProjectile();
-            lastProjectileTime = Time.time; // Perbarui waktu tembakan terakhir
+            
+            lastProjectileTime = Time.time; 
         }
     }
     void FireProjectile()
     {
-        // Spawn proyektil di posisi firePoint
+        
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
 
-        // Pastikan arah proyektil sesuai dengan orientasi bos
+        
         BossAmmo projectileScript = projectile.GetComponent<BossAmmo>();
 
-        if (transform.localScale.x < 0) // Menghadap kanan
+        if (transform.localScale.x < 0) 
         {
-            projectileScript.speed = Mathf.Abs(projectileScript.speed); // Gerakan ke kanan
+            projectileScript.speed = Mathf.Abs(projectileScript.speed); 
         }
-        else // Menghadap kiri
+        else 
         {
-            projectileScript.speed = -Mathf.Abs(projectileScript.speed); // Gerakan ke kiri
+            projectileScript.speed = -Mathf.Abs(projectileScript.speed); 
         }
-        if (transform.localScale.x < 0) // Menghadap kiri
+        if (transform.localScale.x < 0) 
         {
-            projectile.transform.localScale = new Vector3(-1, 1, 1); // Flip sprite proyektil
+            projectile.transform.localScale = new Vector3(-1, 1, 1); 
         }
     }
 
     void ultimate(){
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
 
-        // Pastikan arah proyektil sesuai dengan orientasi bos
+        
         BossAmmo projectileScript = projectile.GetComponent<BossAmmo>();
-        if (transform.localScale.x < 0) // Menghadap kanan
+        if (transform.localScale.x < 0) 
         {
-            projectileScript.speed = Mathf.Abs(projectileScript.speed); // Gerakan ke kanan
+            projectileScript.speed = Mathf.Abs(projectileScript.speed); 
         }
-        else // Menghadap kiri
+        else 
         {
-            projectileScript.speed = -Mathf.Abs(projectileScript.speed); // Gerakan ke kiri
+            projectileScript.speed = -Mathf.Abs(projectileScript.speed); 
         }
-        if (transform.localScale.x < 0) // Menghadap kiri
+        if (transform.localScale.x < 0) 
         {
-            projectile.transform.localScale = new Vector3(-1, 1, 1); // Flip sprite proyektil
+            projectile.transform.localScale = new Vector3(-1, 1, 1); 
         }
 
     }
@@ -70,7 +81,7 @@ public class Bosscontrollers : MonoBehaviour
     {
         currentHealth -= damage;
         if (currentHealth > 0){
-        animator.SetTrigger("Hit"); // Animasi terkena serangan
+        animator.SetTrigger("Hit"); 
         }else
         {
             Die();
@@ -79,10 +90,32 @@ public class Bosscontrollers : MonoBehaviour
 
     void Die()
     {
-        animator.SetTrigger("die"); // Animasi kematian
+        rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+        StartCoroutine(ShowDialogues());
+    }
+
+    private IEnumerator ShowDialogues()
+    {
+        GetComponent<Collider2D>().enabled = false;
+        this.enabled = false;
+        dialog1.gameObject.SetActive(true);
+       
+        yield return new WaitForSeconds(dialoguesDuration);
+        dialog1.gameObject.SetActive(false);
+        dialog2.gameObject.SetActive(true);
+        
+        yield return new WaitForSeconds(dialoguesDuration);
+        dialog2.gameObject.SetActive(false);
+        dialog3.gameObject.SetActive(true);
+        SoundManager.Instance.PlaySound2D("BossAttackUltimate");
+        animator.SetTrigger("die");
+        yield return new WaitForSeconds(dialoguesDuration);
         clear.gameObject.SetActive(true);
-        GetComponent<Collider2D>().enabled = false; // Matikan collider
-        this.enabled = false; // Nonaktifkan script
-        Destroy(gameObject, 1f); // Hapus boss setelah animasi
+        Destroy(gameObject);
+
+    }
+
+    public void AudioAttack(){
+        SoundManager.Instance.PlaySound2D("BossAttack");
     }
 }

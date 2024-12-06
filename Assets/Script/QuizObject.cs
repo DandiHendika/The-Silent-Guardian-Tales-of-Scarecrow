@@ -23,6 +23,7 @@ public class QuizObject : MonoBehaviour
 
     void Start(){
         anim = GetComponent<Animator>();
+        starCount = 0;
     }
 
     private void Update(){
@@ -40,6 +41,10 @@ public class QuizObject : MonoBehaviour
             teksDialog.SetActive(false);
             teks.SetActive(false);
         }
+
+        if(quizPanel == null){
+            player.gameObject.SetActive(true);
+        }
     }
 
     public void ShowQuiz()
@@ -52,6 +57,7 @@ public class QuizObject : MonoBehaviour
     {
         if (quizPanel != null)
         {
+            player.gameObject.SetActive(false);
             quizPanel.SetActive(true); // Tampilkan panel kuis untuk objek ini
             ShowQuiz(); // Tampilkan pertanyaan kuis
         }
@@ -61,6 +67,7 @@ public class QuizObject : MonoBehaviour
     {
         if (answerInput.text.ToLower() == correctAnswer.ToLower())
         {
+            player.gameObject.SetActive(true);
             tekssalah.SetActive(false);
             starCount++; // Tambah bintang jika jawaban benar
             teksbenar.SetActive(true); // Tampilkan teks jawaban benar
@@ -83,5 +90,9 @@ public class QuizObject : MonoBehaviour
 
     public void hideObj(){
         quizPanel.SetActive(false);
+    }
+
+    public void Aktifkan(){
+        player.gameObject.SetActive(true);
     }
 }

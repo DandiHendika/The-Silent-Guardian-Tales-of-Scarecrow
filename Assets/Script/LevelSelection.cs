@@ -21,5 +21,4 @@ public class LevelSelection : MonoBehaviour
                 lvlButtons[i].interactable = false;
         }
     }
-
 }

@@ -55,12 +55,12 @@ public class Karakter : MonoBehaviour
         } else {
             body.velocity = new Vector2(0, body.velocity.y);
         }
-        if (Input.GetAxis("Horizontal") != 0 && !isWalking )
+        if (Input.GetAxis("Horizontal") != 0 && !isWalking && isGrounded)
         {
             walkSound.Play();
             isWalking = true;
         }
-        else if (Input.GetAxis("Horizontal") == 0 && isWalking)
+        else if ((Input.GetAxis("Horizontal") == 0 || !isGrounded) && isWalking)
         {
             walkSound.Stop();
             isWalking = false;
@@ -70,6 +70,8 @@ public class Karakter : MonoBehaviour
             anim.SetTrigger("jump");
             isGrounded = false;  
             walkSound.Stop();
+            SoundManager.Instance.PlaySound2D("jump");
+            isWalking = false;
         }
         if (transform.position.y < -40f)
         {
@@ -81,7 +83,7 @@ public class Karakter : MonoBehaviour
         #endregion
 
         #region PickUp
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             if (heldObject == null)
             {

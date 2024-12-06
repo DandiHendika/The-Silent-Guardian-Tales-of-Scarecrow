@@ -73,6 +73,10 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void ExitGame(){
+        Application.Quit();
+    }
+
     void Start(){
         Time.timeScale = 1f;
     }

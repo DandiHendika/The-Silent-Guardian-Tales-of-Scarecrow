@@ -21,7 +21,7 @@ public class PlayerShooting : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.B) && cooldownTimer > attackCooldown && !isattacking) // Tombol untuk menembak
+        if (Input.GetKey(KeyCode.C) && cooldownTimer > attackCooldown && !isattacking) // Tombol untuk menembak
         {
             SoundManager.Instance.PlaySound2D("Shoot");
             anim.SetTrigger("Attack");

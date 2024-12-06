@@ -11,6 +11,8 @@ public class BossUltimate : MonoBehaviour
     public float dialogDuration = 2f;    // Durasi dialog
     public float fireblastDuration = 3f; // Durasi fireblast muncul
     public int fireblastDamage = 10;     // Damage fireblast
+    public float projectileCooldown = 15f; 
+    private float lastProjectileTime;
 
     private Bosscontrollers projectileAttack;
     Rigidbody2D rb;
@@ -24,9 +26,10 @@ public class BossUltimate : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.U) && !projectileAttack.isPerformingUltimate) // Trigger ultimate (ganti dengan kondisi lain)
+        if (Time.time >= lastProjectileTime + projectileCooldown && !projectileAttack.isPerformingUltimate) // Trigger ultimate (ganti dengan kondisi lain)
         {
             StartCoroutine(PerformUltimate());
+            lastProjectileTime = Time.time; 
         }
     }
 
@@ -46,6 +49,7 @@ public class BossUltimate : MonoBehaviour
         bubbleText.gameObject.SetActive(false);
 
         // 3. Semburkan fireblast
+        SoundManager.Instance.PlaySound2D("bossdie");
         GameObject fireblast = Instantiate(fireblastPrefab, firePoint.position, firePoint.rotation);
         fireblast.transform.localScale = new Vector3(transform.localScale.x > 0 ? 1 : -1, 1, 1); // Arah fireblast sesuai orientasi bos
 

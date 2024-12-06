@@ -5,6 +5,11 @@ using UnityEngine;
 public class PlayerInteraction : MonoBehaviour
 {
     private QuizObject currentQuizObject; // Objek kuiz yang sedang diinteraksi
+    private GameObject player;
+
+    void Start(){
+        player = GetComponent<GameObject>();
+    }
 
     void Update()
     {

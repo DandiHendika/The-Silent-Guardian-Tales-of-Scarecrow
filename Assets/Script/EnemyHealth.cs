@@ -32,7 +32,7 @@ public class EnemyHealth : MonoBehaviour
     {
         // Trigger animasi mati
         animator.SetTrigger("Die");
-
+        SoundManager.Instance.PlaySound2D("enemykill");
         // Nonaktifkan collider agar tidak bisa disentuh lagi
         Collider2D collider = GetComponent<Collider2D>();
         if (collider != null)

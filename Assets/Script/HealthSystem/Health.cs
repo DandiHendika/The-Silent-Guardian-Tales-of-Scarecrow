@@ -27,6 +27,7 @@ public class Health : MonoBehaviour
             mn.isGameover = true; 
             rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
             Collider2D collider = GetComponent<Collider2D>();
+            SoundManager.Instance.PlaySound2D("Lose");
             if (collider != null)
             {
                 collider.enabled = false;

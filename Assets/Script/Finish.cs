@@ -32,6 +32,7 @@ public class FinishLine : MonoBehaviour
             // Tampilkan pesan kemenangan
             if (winMessage != null)
             {
+                SoundManager.Instance.PlaySound2D("Win");
                 starText.text = "Bintang: " + QuizObject.starCount + "/3"; // Tampilkan jumlah bintang
                 winMessage.SetActive(true);
             }

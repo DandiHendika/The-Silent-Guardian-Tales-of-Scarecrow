@@ -19,7 +19,7 @@ public class HidePlayer : MonoBehaviour
 
         if (distance <= interactionRange)
         {
-            if (Input.GetKeyDown(KeyCode.H))
+            if (Input.GetKeyDown(KeyCode.V))
             {
                 ToggleHide();
             }

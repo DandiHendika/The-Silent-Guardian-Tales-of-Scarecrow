@@ -1,18 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BossEntrance : MonoBehaviour
 {
     public GameObject boss;                 // Objek bos
     public GameObject cage;                 // Objek kandang
+    public GameObject cage2;
     public GameObject bossTransformSprite;  // Sprite transformasi bos
     public GameObject cameraBoss;           // Kamera fokus ke bos
     public GameObject cameraPlayer;         // Kamera fokus ke pemain
     public GameObject[] dialogPanels;       // Panel dialog (4 panel)
     public float dialogDuration = 3f;       // Durasi setiap dialog dalam detik
     private bool isTriggered = false;       // Apakah pemain telah memicu bos
+    [SerializeField] private AudioManager audioManager;
+    [SerializeField] private AudioClip bossMusic;
 
+    private void Update(){
+        if (boss.IsDestroyed()) {
+            audioManager.StopMusicBoss();
+    }
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player") && !isTriggered)
@@ -21,11 +30,14 @@ public class BossEntrance : MonoBehaviour
             cameraPlayer.SetActive(false);
             cameraBoss.SetActive(true);
             StartCoroutine(ShowDialogSequence());
+            audioManager.ChangeToBossMusic(bossMusic);
         }
     }
 
     private IEnumerator ShowDialogSequence()
     {
+        cage.SetActive(true);
+        cage2.SetActive(true);
         // Tampilkan dialog 1
         dialogPanels[0].SetActive(true);
         yield return new WaitForSeconds(dialogDuration);
@@ -57,7 +69,6 @@ public class BossEntrance : MonoBehaviour
     private void EndDialogSequence()
     {
         // Setelah semua dialog selesai
-        boss.SetActive(true); // Aktifkan bos
-        cage.SetActive(true); // Aktifkan kandang
+        boss.SetActive(true); // Aktifkan bos // Aktifkan kandang
     }
 }

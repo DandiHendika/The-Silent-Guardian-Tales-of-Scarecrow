@@ -36,7 +36,7 @@ public class ResetPosisition : MonoBehaviour
             playerInRange = false;
         }
 
-        if (playerInRange && Input.GetKeyDown(KeyCode.R))
+        if (playerInRange && Input.GetKeyDown(KeyCode.X))
         {
             ResetPickUpPositions();
         }

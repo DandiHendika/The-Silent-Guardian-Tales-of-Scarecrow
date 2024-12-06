@@ -6,7 +6,7 @@ public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioSource bgMusicSource;
     [SerializeField] private AudioClip[] sceneMusics; // Daftar musik untuk setiap scene
-    private int currentSceneIndex;
+        private int currentSceneIndex;
 
     private void Start()
     {
@@ -28,6 +28,10 @@ public class AudioManager : MonoBehaviour
         bgMusicSource.Stop();
         bgMusicSource.clip = bossMusic;
         bgMusicSource.Play();
+    }
+
+    public void StopMusicBoss(){
+        bgMusicSource.Stop();
     }
 }
 
