@@ -10758,7 +10758,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -13443,7 +13443,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -15448,6 +15448,8 @@ MonoBehaviour:
   bgMusicSource: {fileID: 2134845622}
   sceneMusics:
   - {fileID: 8300000, guid: 732dcef4ede3ef9469ad432e05bc1285, type: 3}
+  - {fileID: 8300000, guid: 732dcef4ede3ef9469ad432e05bc1285, type: 3}
+  - {fileID: 8300000, guid: 53d5466f389261f4e8a9dce966ea25a6, type: 3}
   - {fileID: 8300000, guid: 53d5466f389261f4e8a9dce966ea25a6, type: 3}
   - {fileID: 8300000, guid: 53d5466f389261f4e8a9dce966ea25a6, type: 3}
 --- !u!1 &769266448
@@ -19874,7 +19876,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1231564642
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20229,7 +20231,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -24550,7 +24552,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -26209,7 +26211,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

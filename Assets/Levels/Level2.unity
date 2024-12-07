@@ -1682,7 +1682,7 @@ MonoBehaviour:
   videoCanvas: {fileID: 508791616}
   creditsPanel: {fileID: 2071985720}
   creditsDuration: 3
-  mainMenuSceneIndex: 0
+  mainMenuSceneIndex: 1
 --- !u!4 &170866502
 Transform:
   m_ObjectHideFlags: 0
@@ -5326,10 +5326,10 @@ RectTransform:
   - {fileID: 1976347658}
   - {fileID: 553086096}
   - {fileID: 337614926}
-  - {fileID: 804209925}
   - {fileID: 790915949}
   - {fileID: 37779403}
   - {fileID: 917892665}
+  - {fileID: 804209925}
   - {fileID: 2071985721}
   - {fileID: 508791617}
   m_Father: {fileID: 0}
@@ -19117,7 +19117,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -19608,7 +19608,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -22018,6 +22018,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgMusicSource: {fileID: 85416137}
   sceneMusics:
+  - {fileID: 8300000, guid: 732dcef4ede3ef9469ad432e05bc1285, type: 3}
   - {fileID: 8300000, guid: 732dcef4ede3ef9469ad432e05bc1285, type: 3}
   - {fileID: 8300000, guid: 53d5466f389261f4e8a9dce966ea25a6, type: 3}
   - {fileID: 8300000, guid: 53d5466f389261f4e8a9dce966ea25a6, type: 3}
@@ -25111,7 +25112,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -32418,7 +32419,7 @@ MonoBehaviour:
   dialogDuration: 1
   fireblastDuration: 0.8
   fireblastDamage: 10
-  projectileCooldown: 3
+  projectileCooldown: 15
 --- !u!1 &2038516931
 GameObject:
   m_ObjectHideFlags: 0
@@ -33346,7 +33347,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

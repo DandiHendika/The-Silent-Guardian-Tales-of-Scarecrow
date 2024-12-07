@@ -509,7 +509,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2199,6 +2199,8 @@ MonoBehaviour:
   bgMusicSource: {fileID: 1042863526}
   sceneMusics:
   - {fileID: 8300000, guid: 732dcef4ede3ef9469ad432e05bc1285, type: 3}
+  - {fileID: 8300000, guid: 732dcef4ede3ef9469ad432e05bc1285, type: 3}
+  - {fileID: 8300000, guid: 53d5466f389261f4e8a9dce966ea25a6, type: 3}
   - {fileID: 8300000, guid: 53d5466f389261f4e8a9dce966ea25a6, type: 3}
   - {fileID: 8300000, guid: 53d5466f389261f4e8a9dce966ea25a6, type: 3}
 --- !u!114 &555151089
@@ -4533,7 +4535,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -5889,7 +5891,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

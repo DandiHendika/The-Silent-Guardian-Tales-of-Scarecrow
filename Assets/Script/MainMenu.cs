@@ -70,7 +70,7 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.DeleteKey("levelAt");
         // PlayerPrefs.Save();
         Debug.Log("PlayerPrefs telah direset.");
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void ExitGame(){

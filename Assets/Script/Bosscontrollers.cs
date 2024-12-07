@@ -19,9 +19,11 @@ public class Bosscontrollers : MonoBehaviour
     public GameObject dialog3;
     public float dialoguesDuration = 2f;
     private Rigidbody2D rb;
+    private BossUltimate bu;
 
     void Start(){
         rb = GetComponent<Rigidbody2D>();
+        bu = GetComponent<BossUltimate>();
     }
 
     void Update()
@@ -98,6 +100,7 @@ public class Bosscontrollers : MonoBehaviour
     {
         GetComponent<Collider2D>().enabled = false;
         this.enabled = false;
+        bu.enabled = false;
         dialog1.gameObject.SetActive(true);
        
         yield return new WaitForSeconds(dialoguesDuration);
@@ -110,6 +113,7 @@ public class Bosscontrollers : MonoBehaviour
         SoundManager.Instance.PlaySound2D("BossAttackUltimate");
         animator.SetTrigger("die");
         yield return new WaitForSeconds(dialoguesDuration);
+        SoundManager.Instance.PlaySound2D("Win");
         clear.gameObject.SetActive(true);
         Destroy(gameObject);
 
