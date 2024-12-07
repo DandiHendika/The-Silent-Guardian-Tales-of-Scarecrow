@@ -5,51 +5,65 @@ using UnityEngine.Video;
 
 public class EndingVideoSequence : MonoBehaviour
 {
-    public VideoPlayer videoPlayer;       // VideoPlayer untuk memutar video ending
-    public GameObject videoCanvas;        // Canvas atau panel untuk video ending
-    public GameObject creditsPanel;       // Panel untuk credits
-    public float creditsDuration = 10f;   // Durasi untuk panel credits
-    public int mainMenuSceneIndex = 0;    // Index scene main menu (ubah sesuai build settings)
+    [Header("Main Video Settings")]
+    public VideoPlayer mainVideoPlayer;    // VideoPlayer untuk video utama
+    public GameObject mainVideoCanvas;     // Canvas untuk video utama
 
-    private bool sequenceStarted = false;
+    [Header("Credits Video Settings")]
+    public VideoPlayer creditsVideoPlayer; // VideoPlayer untuk credits
+    public GameObject creditsVideoCanvas;  // Canvas untuk credits
+
+    [Header("Settings")]
+    public float creditsDuration = 5f;     // Tambahan durasi untuk credits (opsional)
+    public int mainMenuSceneIndex = 0;     // Index scene untuk Main Menu (atur di Build Settings)
+
+    private bool sequenceStarted = false;  // Untuk memastikan urutan hanya dijalankan sekali
 
     public void StartEndingSequence()
     {
         if (!sequenceStarted)
         {
             sequenceStarted = true;
-            StartCoroutine(PlayEndingVideoSequence());
+            StartCoroutine(PlayEndingSequence());
         }
     }
 
-    private IEnumerator PlayEndingVideoSequence()
+    private IEnumerator PlayEndingSequence()
     {
+        // Memutar video utama
+        yield return PlayVideo(mainVideoPlayer, mainVideoCanvas);
+
+        // Memutar video credits
+        yield return PlayVideo(creditsVideoPlayer, creditsVideoCanvas);
+
+        // Tunggu tambahan durasi credits (jika dibutuhkan)
+
+        // Pindah ke main menu
+        SceneManager.LoadScene(mainMenuSceneIndex);
+    }
+
+    private IEnumerator PlayVideo(VideoPlayer videoPlayer, GameObject videoCanvas)
+    {
+        // Persiapkan video
         videoPlayer.Prepare();
 
-        // Tunggu hingga video selesai dipersiapkan
+        // Tunggu hingga video siap
         while (!videoPlayer.isPrepared)
         {
             yield return null;
         }
 
-        // Tampilkan video canvas
+        // Tampilkan canvas dan mulai video
         videoCanvas.SetActive(true);
         videoPlayer.Play();
 
-        // Tunggu hingga video selesai diputar
+        // Tunggu hingga video selesai
         while (videoPlayer.isPlaying)
         {
             yield return null;
         }
 
-        // Sembunyikan video canvas setelah selesai
+        // Sembunyikan canvas setelah selesai
         videoCanvas.SetActive(false);
-
-        // Tampilkan panel credits
-        creditsPanel.SetActive(true);
-        yield return new WaitForSeconds(creditsDuration);
-
-        // Kembali ke main menu
-        SceneManager.LoadScene(mainMenuSceneIndex);
     }
 }
