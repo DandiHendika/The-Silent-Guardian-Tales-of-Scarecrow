@@ -13,19 +13,15 @@ public class PingPongMovementRight : MonoBehaviour
 
     void Start()
     {
-        
         startPosition = transform.position;
         sprite = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
-        
         if (movingRight)
         {
             transform.position += Vector3.right * speed * Time.deltaTime;
-
-            
             if (transform.position.x >= startPosition.x + moveDistance)
             {
                 movingRight = false; 
@@ -34,9 +30,7 @@ public class PingPongMovementRight : MonoBehaviour
         }
         else
         {
-            transform.position += Vector3.left * speed * Time.deltaTime;
-
-            
+            transform.position += Vector3.left * speed * Time.deltaTime;            
             if (transform.position.x <= startPosition.x)
             {
                 movingRight = true; 

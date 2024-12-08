@@ -6,7 +6,7 @@ using UnityEngine.Video;
 public class LoadingScene : MonoBehaviour
 {
     public GameObject loading;
-    public VideoPlayer videoPlayer; // Tambahkan reference untuk VideoPlayer
+    public VideoPlayer videoPlayer; 
 
     public void LoadScene(int sceneId)
     {
@@ -15,16 +15,16 @@ public class LoadingScene : MonoBehaviour
 
     IEnumerator LoadSceneAsync(int sceneId)
     {
-        // Mulai loading scene secara async
+        
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
-        operation.allowSceneActivation = false; // Jangan pindah ke scene sampai video selesai
+        operation.allowSceneActivation = false; 
 
         videoPlayer.Prepare();
         while (!videoPlayer.isPrepared)
         {
             yield return null;
         }
-        // Aktifkan loading screen dan mulai video
+        
         loading.SetActive(true);
         videoPlayer.Play();
         if (videoPlayer.isPlaying)
@@ -38,7 +38,7 @@ public class LoadingScene : MonoBehaviour
 
         while (videoPlayer.isPlaying)
         {
-            yield return null; // Tunggu hingga video selesai
+            yield return null; 
         }
 
         if (sceneId > PlayerPrefs.GetInt("levelAt", 2))
@@ -47,7 +47,6 @@ public class LoadingScene : MonoBehaviour
             PlayerPrefs.Save();
         }
 
-        // Aktifkan scene berikutnya setelah video selesai
         operation.allowSceneActivation = true;
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Fireblast : MonoBehaviour
 {
-    public int damage = 10; // Damage yang diberikan fireblast
+    public int damage = 10;
 
     void OnCollisionEnter2D(Collision2D other)
     {

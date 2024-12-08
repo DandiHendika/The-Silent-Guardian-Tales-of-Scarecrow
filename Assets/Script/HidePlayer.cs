@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class HidePlayer : MonoBehaviour
 {
-    [SerializeField] private GameObject player;              // Referensi ke GameObject pemain
-    [SerializeField] private Transform hidingSpot;           // Lokasi objek interaksi (tempat bersembunyi)
-    public float interactionRange = 2f;                     // Jarak interaksi maksimum
-    private bool isHidden = false;                          // Status apakah player sedang tersembunyi
-
-    // Variabel untuk pengaturan Gizmo
-    public Color gizmoColor = new Color(0, 1, 0, 0.5f);     // Warna Gizmo (default hijau transparan)
-    public bool drawSolidGizmo = false;                     // Apakah Gizmo digambar solid atau wireframe
+    [SerializeField] private GameObject player;              
+    [SerializeField] private Transform hidingSpot;           
+    public float interactionRange = 2f;                     
+    private bool isHidden = false;                          
+    public Color gizmoColor = new Color(0, 1, 0, 0.5f);     
+    public bool drawSolidGizmo = false;                     
 
     void Update()
     {
@@ -44,15 +42,15 @@ public class HidePlayer : MonoBehaviour
     {
         if (hidingSpot != null)
         {
-            Gizmos.color = gizmoColor; // Set warna Gizmo
+            Gizmos.color = gizmoColor; 
             if (drawSolidGizmo)
             {
-                // Gambar lingkaran solid
+                
                 Gizmos.DrawSphere(hidingSpot.position, interactionRange);
             }
             else
             {
-                // Gambar lingkaran wireframe
+                
                 Gizmos.DrawWireSphere(hidingSpot.position, interactionRange);
             }
         }

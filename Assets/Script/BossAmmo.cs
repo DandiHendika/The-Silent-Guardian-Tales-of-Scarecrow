@@ -4,21 +4,18 @@ using UnityEngine;
 
 public class BossAmmo : MonoBehaviour
 {
-    public float speed = 5f; // Kecepatan proyektil
-    public int damage = 1; // Damage yang diberikan
-    public float lifeTime = 5f; // Waktu hidup proyektil
+    public float speed = 5f; 
+    public int damage = 1; 
+    public float lifeTime = 5f; 
 
     void Start()
     {
-        // Hancurkan proyektil setelah waktu tertentu
         Destroy(gameObject, lifeTime);
     }
 
     void Update()
     {
-        // Gerakan proyektil ke arah kanan
-        transform.Translate(Vector2.right * speed * Time.deltaTime);
-        
+        transform.Translate(Vector2.right * speed * Time.deltaTime);   
     }
 
     void OnCollisionEnter2D(Collision2D other)

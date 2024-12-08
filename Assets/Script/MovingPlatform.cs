@@ -4,27 +4,26 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    public Transform pointA; // Titik awal
-    public Transform pointB; // Titik akhir
-    public float speed = 2f; // Kecepatan platform
+    public Transform pointA; 
+    public Transform pointB; 
+    public float speed = 2f; 
 
-    private Vector3 targetPosition; // Posisi tujuan
+    private Vector3 targetPosition; 
 
     void Start()
     {
-        // Mulai dengan menuju titik A
+        
         targetPosition = pointA.position;
     }
 
     void Update()
     {
-        // Gerakkan platform menuju target position
+        
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
-
-        // Cek jika platform sudah mencapai target
+    
         if (Vector3.Distance(transform.position, targetPosition) < 0.01f)
         {
-            // Ubah target ke titik lainnya
+            
             targetPosition = targetPosition == pointA.position ? pointB.position : pointA.position;
         }
     }
@@ -33,7 +32,7 @@ public class MovingPlatform : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.transform.SetParent(transform); // Tempelkan player ke platform
+            other.transform.SetParent(transform); 
         }
     }
 
@@ -41,7 +40,7 @@ public class MovingPlatform : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.transform.SetParent(null); // Lepaskan player dari platform
+            other.transform.SetParent(null); 
         }
     }
 

@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class TutorCut : MonoBehaviour
 {
-    public Image cutsceneImage; // Referensi ke UI Image
+    public Image cutsceneImage; 
     public GameObject dialog1;
     public GameObject dialog2;
     public GameObject dialog3;
-    public float cutsceneDuration = 3f; // Durasi cutscene dalam detik
-    public float dialoguesDuration = 1f; // Durasi transisi antar layar dalam
+    public float cutsceneDuration = 3f; 
+    public float dialoguesDuration = 1f; 
     public float Duration = 5f;
     public Rigidbody2D rb;
 
@@ -25,7 +25,7 @@ public class TutorCut : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
         cutsceneImage.gameObject.SetActive(true);
 
-    // Fade in
+    
         for (float t = 0; t < 1; t += Time.deltaTime / 1f)
         {
             cutsceneImage.color = new Color(1, 1, 1, t);
@@ -34,7 +34,7 @@ public class TutorCut : MonoBehaviour
 
         yield return new WaitForSeconds(cutsceneDuration);
 
-    // Fade out
+    
         for (float t = 1; t > 0; t -= Time.deltaTime / 1f)
         {
             cutsceneImage.color = new Color(1, 1, 1, t);

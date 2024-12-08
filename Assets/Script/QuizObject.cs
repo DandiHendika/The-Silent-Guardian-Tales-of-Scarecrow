@@ -8,12 +8,12 @@ public class QuizObject : MonoBehaviour
 {
     public GameObject teksbenar;
     public GameObject tekssalah;
-    public string question; // Pertanyaan
-    public string correctAnswer; // Jawaban benar
-    public TMP_Text questionText; // Komponen Text untuk menampilkan pertanyaan
-    public TMP_InputField answerInput; // InputField untuk jawaban
-    public GameObject quizPanel; // Panel kuiz spesifik untuk objek ini
-    public static int starCount = 0; // Jumlah bintang yang didapatkan player
+    public string question; 
+    public string correctAnswer; 
+    public TMP_Text questionText; 
+    public TMP_InputField answerInput; 
+    public GameObject quizPanel; 
+    public static int starCount = 0; 
     private Animator anim;
     private bool playerInRange = false;
     private float interactionRange = 7f;
@@ -49,8 +49,8 @@ public class QuizObject : MonoBehaviour
 
     public void ShowQuiz()
     {
-        questionText.text = question; // Tampilkan pertanyaan
-        answerInput.text = ""; // Kosongkan input
+        questionText.text = question; 
+        answerInput.text = ""; 
     }
 
     public void ActivateQuizPanel()
@@ -58,8 +58,8 @@ public class QuizObject : MonoBehaviour
         if (quizPanel != null)
         {
             player.gameObject.SetActive(false);
-            quizPanel.SetActive(true); // Tampilkan panel kuis untuk objek ini
-            ShowQuiz(); // Tampilkan pertanyaan kuis
+            quizPanel.SetActive(true); 
+            ShowQuiz(); 
         }
     }
 
@@ -69,17 +69,17 @@ public class QuizObject : MonoBehaviour
         {
             player.gameObject.SetActive(true);
             tekssalah.SetActive(false);
-            starCount++; // Tambah bintang jika jawaban benar
-            teksbenar.SetActive(true); // Tampilkan teks jawaban benar
-            Debug.Log("Jawaban benar! Bintang: " + starCount); // Sembunyikan panel kuis
-            anim.SetTrigger("die"); // Aktifkan animasi koreksi
+            starCount++; 
+            teksbenar.SetActive(true); 
+            Debug.Log("Jawaban benar! Bintang: " + starCount); 
+            anim.SetTrigger("die"); 
             teks.SetActive(false);
             teksDialog.SetActive(false);
             this.enabled = false;
         }
         else
         {
-            tekssalah.SetActive(true); // Tampilkan teks jawaban salah
+            tekssalah.SetActive(true); 
             Debug.Log("Jawaban salah!");
         }
     }

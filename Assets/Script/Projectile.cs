@@ -41,12 +41,11 @@ public class Projectile : MonoBehaviour
         // }
 
         // transform.localScale = new Vector3(localScaleX, transform.localScale.y, transform.localScale.z);
-        direction = Mathf.Sign(_direction); // Pastikan _direction hanya -1 atau 1
+        direction = Mathf.Sign(_direction);
         gameObject.SetActive(true);
         hit = false;
         boxCollider.enabled = true;
 
-        // Perbarui skala lokal berdasarkan arah
         Vector3 localScale = transform.localScale;
         if (Mathf.Sign(localScale.x) != direction)
         {

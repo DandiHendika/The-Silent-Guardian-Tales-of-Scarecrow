@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class LevelComplete : MonoBehaviour
 {
-    public int currentLevelIndex; // Indeks level ini (sesuai urutan di Build Settings)
+    public int currentLevelIndex; 
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player")) // Pastikan hanya pemain yang bisa memicu
+        if (collision.CompareTag("Player")) 
         {
-            LevelManager.UnlockNextLevel(currentLevelIndex);
-
-            // Contoh: Kembali ke Main Menu
+            LevelManager.UnlockNextLevel(currentLevelIndex); 
             UnityEngine.SceneManagement.SceneManager.LoadScene("Main Menu");
         }
     }

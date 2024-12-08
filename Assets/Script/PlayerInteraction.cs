@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    private QuizObject currentQuizObject; // Objek kuiz yang sedang diinteraksi
+    private QuizObject currentQuizObject; 
     private GameObject player;
 
     void Start(){
@@ -13,10 +13,9 @@ public class PlayerInteraction : MonoBehaviour
 
     void Update()
     {
-        // Deteksi tombol E untuk berinteraksi
         if (Input.GetKeyDown(KeyCode.E) && currentQuizObject != null)
         {
-            currentQuizObject.ActivateQuizPanel(); // Aktifkan panel kuis dari QuizObject
+            currentQuizObject.ActivateQuizPanel(); 
         }
     }
 

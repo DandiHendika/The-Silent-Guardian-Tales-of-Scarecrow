@@ -5,29 +5,24 @@ using UnityEngine;
 
 public class Egg : MonoBehaviour
 {
-    public Animator animator; // Referensi Animator
-    public float destroyDelay = 1f; // Waktu sebelum telur dihancurkan setelah pecah
+    public Animator animator; 
+    public float destroyDelay = 1f; 
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        // Cek apakah telur menyentuh Player
         if (collision.gameObject.CompareTag("Player"))
         {
-            TriggerBreak(); // Pecahkan telur
-            // Tambahkan logika seperti mengurangi HP player jika perlu
+            TriggerBreak();  
         }
         else if (collision.gameObject.CompareTag("Ground"))
         {
-            TriggerBreak(); // Pecahkan telur
+            TriggerBreak(); 
         }
     }
 
     void TriggerBreak()
     {
-        // Aktifkan animasi pecah
-        animator.SetTrigger("pecah");
-
-        // Hancurkan objek setelah animasi selesai
+        animator.SetTrigger("pecah"); 
         Destroy(gameObject, destroyDelay);
     }
 }

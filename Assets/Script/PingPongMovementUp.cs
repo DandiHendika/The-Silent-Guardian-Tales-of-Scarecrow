@@ -13,18 +13,14 @@ public class PingPongMovementUp : MonoBehaviour
 
     void Start()
     {
-        
         startPosition = transform.position;
     }
 
     void Update()
     {
-        
         if (movingUp)
         {
             transform.position += Vector3.up * speed * Time.deltaTime;
-
-            
             if (transform.position.y >= startPosition.y + moveDistance)
             {
                 movingUp = false; 
@@ -33,8 +29,6 @@ public class PingPongMovementUp : MonoBehaviour
         else
         {
             transform.position += Vector3.down * speed * Time.deltaTime;
-
-            
             if (transform.position.y <= startPosition.y)
             {
                 movingUp = true; 

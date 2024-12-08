@@ -19,7 +19,7 @@ public class MainMenu : MonoBehaviour
     }
 
     public void Continue(){
-        Menu.SetActive(false);       // Sembunyikan pause menu
+        Menu.SetActive(false);
         Time.timeScale = 1f;   
         isPaused = false;
     }

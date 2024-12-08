@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Papan : MonoBehaviour
 {
-    [SerializeField] private float delayBeforeDisappear = 3f; // Waktu sebelum platform menghilang
-    [SerializeField] private float appearDelay = 2f; // Waktu sebelum platform muncul kembali
+    [SerializeField] private float delayBeforeDisappear = 3f; 
+    [SerializeField] private float appearDelay = 2f; 
 
     private Vector3 initialPosition;
     private bool isActive = true;
@@ -14,8 +14,8 @@ public class Papan : MonoBehaviour
     private void Start()
     {
         initialPosition = transform.position;
-        platformCollider = GetComponent<Collider2D>(); // Mendapatkan komponen Collider2D
-        platformRenderer = GetComponent<SpriteRenderer>(); // Mendapatkan komponen SpriteRenderer
+        platformCollider = GetComponent<Collider2D>(); 
+        platformRenderer = GetComponent<SpriteRenderer>(); 
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -30,21 +30,18 @@ public class Papan : MonoBehaviour
     private IEnumerator DisappearAfterDelay()
     {
         yield return new WaitForSeconds(delayBeforeDisappear);
-        // Nonaktifkan collider dan ubah objek menjadi transparan
+        
         platformCollider.enabled = false;
-        platformRenderer.color = new Color(platformRenderer.color.r, platformRenderer.color.g, platformRenderer.color.b, 0f); // Membuat objek transparan
-
-        // Tunggu beberapa detik sebelum memulihkan
+        platformRenderer.color = new Color(platformRenderer.color.r, platformRenderer.color.g, platformRenderer.color.b, 0f); 
+        
         yield return new WaitForSeconds(appearDelay);
 
-        // Pulihkan collider dan objek menjadi tidak transparan
         platformCollider.enabled = true;
-        platformRenderer.color = new Color(platformRenderer.color.r, platformRenderer.color.g, platformRenderer.color.b, 1f); // Kembalikan objek menjadi terlihat
+        platformRenderer.color = new Color(platformRenderer.color.r, platformRenderer.color.g, platformRenderer.color.b, 1f); 
     }
 
     public void ResetPlatform()
     {
-        // Reset posisi objek jika diperlukan
         transform.position = initialPosition;
         isActive = true;
     }

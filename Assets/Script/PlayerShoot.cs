@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-    public GameObject bulletPrefab; // Prefab peluru
-    public Transform firePoint;     // Titik tembak
-    public float bulletSpeed = 10f; // Kecepatan peluru
-    private SpriteRenderer sprite;  // Sprite player untuk menentukan arah
+    public GameObject bulletPrefab; 
+    public Transform firePoint;     
+    public float bulletSpeed = 10f; 
+    private SpriteRenderer sprite;  
     private Animator anim;
     [SerializeField] private float attackCooldown;
     private float cooldownTimer = Mathf.Infinity;
@@ -21,7 +21,7 @@ public class PlayerShooting : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.C) && cooldownTimer > attackCooldown && !isattacking) // Tombol untuk menembak
+        if (Input.GetKey(KeyCode.C) && cooldownTimer > attackCooldown && !isattacking) 
         {
             SoundManager.Instance.PlaySound2D("Shoot");
             anim.SetTrigger("Attack");
@@ -32,25 +32,25 @@ public class PlayerShooting : MonoBehaviour
 
     void Shoot()
     {
-        // Membuat peluru di posisi firePoint
+        
         cooldownTimer = 0;
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
-        // Menentukan arah peluru
+        
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
-            Vector2 shootDirection = sprite.flipX ? Vector2.left : Vector2.right; // Kiri jika flipX
+            Vector2 shootDirection = sprite.flipX ? Vector2.left : Vector2.right; 
             rb.velocity = shootDirection * bulletSpeed;
         }
 
-        // Hancurkan peluru setelah beberapa detik
+        
         Destroy(bullet, 2f);
     }
 
     public void EndAttack()
     {
-        isattacking = false; // Mengizinkan input ulang setelah animasi selesai
+        isattacking = false; 
     }
 }
 

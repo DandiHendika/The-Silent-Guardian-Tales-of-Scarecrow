@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class FlyingEnemy : MonoBehaviour
 {
-    public float followSpeed = 2f; // Kecepatan mengikuti
-    public GameObject eggPrefab; // Prefab telur
-    public Transform eggSpawnPoint; // Posisi spawn telur
-    public float dropInterval = 2f; // Interval menjatuhkan telur
+    public float followSpeed = 2f; 
+    public GameObject eggPrefab; 
+    public Transform eggSpawnPoint; 
+    public float dropInterval = 2f; 
 
-    private Transform player; // Referensi posisi pemain
+    private Transform player; 
     private bool isPlayerInRange = false;
     private bool canDropEgg = true;
 
@@ -23,11 +23,10 @@ public class FlyingEnemy : MonoBehaviour
 
     void FollowPlayer()
     {
-        // Gerakkan enemy ke arah pemain
+        
         Vector3 targetPosition = new Vector3(player.position.x, player.position.y + 5f, transform.position.z);
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, followSpeed * Time.deltaTime);
-
-        // Cek apakah berada di atas pemain
+    
         if (Mathf.Abs(transform.position.x - player.position.x) < 0.5f)
         {
             DropEgg();
@@ -50,7 +49,7 @@ public class FlyingEnemy : MonoBehaviour
         canDropEgg = true;
     }
 
-    // Event ketika pemain masuk ke dalam area deteksi
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -60,7 +59,7 @@ public class FlyingEnemy : MonoBehaviour
         }
     }
 
-    // Event ketika pemain keluar dari area deteksi
+    
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -70,10 +69,10 @@ public class FlyingEnemy : MonoBehaviour
         }
     }
 
-    // Visualisasi wilayah deteksi dengan Gizmos
+    
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, 5f); // Radius deteksi untuk visualisasi
+        Gizmos.DrawWireSphere(transform.position, 5f); 
     }
 }
