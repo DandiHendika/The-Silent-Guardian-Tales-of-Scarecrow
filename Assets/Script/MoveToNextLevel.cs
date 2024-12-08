@@ -7,18 +7,20 @@ using UnityEngine.SceneManagement;
 public class MoveToNextLevel : MonoBehaviour
 {
     public int nextSceneLoad;
+    public int NextLevels;
 
     // Start is called before the first frame update
     void Start()
     {
         nextSceneLoad = SceneManager.GetActiveScene().buildIndex + 1;
+        NextLevels = SceneManager.GetActiveScene().buildIndex;
     }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag("Player"))
         {
-            if(SceneManager.GetActiveScene().buildIndex == 4) /* < Change this int value to whatever your
+            if(SceneManager.GetActiveScene().buildIndex == 5) /* < Change this int value to whatever your
                                                                    last level build index is on your
                                                                    build settings */
             {
@@ -42,7 +44,7 @@ public class MoveToNextLevel : MonoBehaviour
 
     public void NextLevel()
     {
-        if(SceneManager.GetActiveScene().buildIndex == 3) /* < Change this int value to whatever your
+        if(SceneManager.GetActiveScene().buildIndex == 5) /* < Change this int value to whatever your
                                                                    last level build index is on your
                                                                    build settings */
         {
@@ -58,7 +60,7 @@ public class MoveToNextLevel : MonoBehaviour
                 //Setting Int for Index
             if (nextSceneLoad > PlayerPrefs.GetInt("levelAt"))
             {
-                PlayerPrefs.SetInt("levelAt", nextSceneLoad);
+                PlayerPrefs.SetInt("levelAt", NextLevels);
             }
          }
     }

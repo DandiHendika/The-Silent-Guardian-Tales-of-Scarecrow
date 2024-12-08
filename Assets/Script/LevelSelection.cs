@@ -14,7 +14,6 @@ public class LevelSelection : MonoBehaviour
         int levelAt = PlayerPrefs.GetInt("levelAt", 1); /* < Change this int value to whatever your
                                                              level selection build index is on your
                                                              build settings */
-
         for (int i = 0; i < lvlButtons.Length; i++)
         {
             if (i + 1 > levelAt)

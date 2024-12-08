@@ -11,7 +11,6 @@ public class FinishLine : MonoBehaviour
     public float loadDelay = 3f;         // Waktu sebelum pindah ke Scene 0
 
     private bool isFinished = false;     // Cegah trigger berulang
-    public TMP_Text starText;
 
     void Start()
     {
@@ -33,7 +32,6 @@ public class FinishLine : MonoBehaviour
             if (winMessage != null)
             {
                 SoundManager.Instance.PlaySound2D("Win");
-                starText.text = "Bintang: " + QuizObject.starCount + "/3"; // Tampilkan jumlah bintang
                 winMessage.SetActive(true);
             }
             // Pause game
